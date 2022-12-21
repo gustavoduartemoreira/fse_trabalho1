@@ -7,8 +7,8 @@
 
 
 #define IP_SERVIDOR "164.41.98.26"
-#define PORTA_SERVIDOR 5000
-#define CLIENTE_PORTA 5001
+#define PORTA_SERVIDOR 10972
+#define CLIENTE_PORTA 10973
 
 void *sendServer();
 void *createClient();

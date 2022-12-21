@@ -96,7 +96,6 @@ void *createClient(){
         printf("Erro ao fazer bind");
         exit(1);
     }
-
     if(listen(socketClient, 10) < 0){
         printf("Erro ao escutar");
         exit(1);

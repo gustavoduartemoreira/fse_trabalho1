@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define PORTA_SERVIDOR 13508
+#define PORTA_SERVIDOR 10972
 #define CLIENTE_IP "164.41.98.26"
-#define CLIENTE_PORTA 13509
+#define CLIENTE_PORTA 10973
 
 
 void *criarServidor();

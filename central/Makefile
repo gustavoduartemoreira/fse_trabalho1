@@ -1,22 +1,25 @@
-# Executable
-BINFOLDER := bin/
-# .hpp
-INCFOLDER := inc/
-# .cpp
-SRCFOLDER := src/
-# .o
-OBJFOLDER := obj/
-CC := gcc
-CFLAGS := -W -Wall -lwiringPi -lpthread -ggdb
-LDLIBS=-lwiringPi -lpthread
-SRCFILES := $(wildcard src/*.c)
-all: $(SRCFILES:src/%.c=obj/%.o)
-	$(CC) $(CFLAGS) obj/*.o -o bin/prog $(LDLIBS)
-obj/%.o: src/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I./inc
-run: bin/prog
-	bin/prog
-.PHONY: clean
+CC = gcc
+LDFLAGS = -lpthread -lncurses
+BLDDIR = .
+INCDIR = $(BLDDIR)/inc
+SRCDIR = $(BLDDIR)/src
+OBJDIR = $(BLDDIR)/obj
+CFLAGS = -c -Wall -I$(INCDIR) 
+SRC = $(wildcard $(SRCDIR)/*.c)
+OBJ = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
+EXE = bin/bin
+
+all: clean $(EXE) 
+    
+$(EXE): $(OBJ) 
+	$(CC)  $(LDFLAGS)  $(OBJDIR)/*.o -o $@ 
+
+$(OBJDIR)/%.o : $(SRCDIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $< -o $@
+
 clean:
-	rm -rf obj/*
-	rm -rf bin/*
+	-rm -f $(OBJDIR)/*.o $(EXE)
+
+run:
+	./bin/bin
