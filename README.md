@@ -9,7 +9,7 @@ Subir o servidor central e depois distribuido:
 Subir central:
 ```
         git clone 
-        cd FSE_TRABALHO1
+        cd fse_trabalho1
         cd central
         make clean
         make
@@ -19,7 +19,7 @@ Subir Distribuido:
 
 ```
         git clone 
-        cd FSE_TRABALHO1
+        cd fse_trabalho1
         cd distribuido
         make clean
         make
